@@ -13,10 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\ImageController::class, 'index']);
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [\App\Http\Controllers\ImageController::class, 'about']);
+
+Route::get('/create', [\App\Http\Controllers\ImageController::class, 'create']);
+
+Route::get('/show/{id}', [\App\Http\Controllers\ImageController::class, 'show']);
+
+Route::get('/edit/{id}', [\App\Http\Controllers\ImageController::class, 'edit']);
+
+Route::post('/store', [\App\Http\Controllers\ImageController::class, 'store']);
+
+Route::post('/update/{id}', [\App\Http\Controllers\ImageController::class, 'update']);
+
+Route::get('/delete/{id}', [\App\Http\Controllers\ImageController::class, 'delete']);
