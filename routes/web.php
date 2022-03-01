@@ -12,8 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['guest', 'admin'])->group(function() {
+    Route::get('/', [\App\Http\Controllers\ImageController::class, 'index']);
+});
 
-Route::get('/', [\App\Http\Controllers\ImageController::class, 'index']);
+Route::get('/gfdsgfdgdf', function () {
+    return 'login page';
+})->name('login');
+
 
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about']);
 
@@ -28,3 +34,7 @@ Route::post('/store', [\App\Http\Controllers\ImageController::class, 'store']);
 Route::post('/update/{id}', [\App\Http\Controllers\ImageController::class, 'update']);
 
 Route::get('/delete/{id}', [\App\Http\Controllers\ImageController::class, 'delete']);
+
+Route::get('/test/{id}', function (int $id) {
+    dd($id);
+});
